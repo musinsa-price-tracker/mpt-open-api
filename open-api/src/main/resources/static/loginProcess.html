@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> route page </title>
+</head>
+<body>
+<script>
+    function getUrlParams() {
+        var params = {};
+
+        decodeURIComponent(window.location.search).replace(/[?&]+([^=&]+)=([^&]*)/gi,
+            function(str, key, value) {
+                params[key] = value;
+            }
+        );
+
+        return params;
+    }
+    window.onload = function() {
+        var params = getUrlParams();
+
+        // console.log(params['loginParam']);
+        // console.log(JSON.parse(decodeURI(params['loginParam'])));
+
+        try{
+            if(window.opener !== null){
+                window.opener.postMessage(params,"*");
+            }
+        } catch (e){
+            console.log(e);
+        } finally {
+            window.close();
+        }
+    }
+</script>
+</body>
+</html>
