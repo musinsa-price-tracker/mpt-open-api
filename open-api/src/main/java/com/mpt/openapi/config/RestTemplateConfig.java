@@ -1,4 +1,4 @@
-package com.mpt.openapi.common;
+package com.mpt.openapi.config;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
