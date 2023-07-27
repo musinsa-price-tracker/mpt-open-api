@@ -34,39 +34,26 @@ public class GoodsController {
     @GetMapping("/goods/{goods_id}")
     @CrossOrigin("*")
     public ResponseEntity<String> getGoodsById(@PathVariable("goods_id") int data) {
-
-        log.info("before call url");
         String url = UrlConfig.GOODS_SERVER.getUrl() + GOODS_URL;
         ResponseEntity<String> result = restTemplate.getForEntity(url, String.class, data);
-        log.info("result = {}", result.getBody());
         return ResponseEntity.ok(result.getBody());
     }
 
     @GetMapping("/goods")
     @CrossOrigin("*")
-    public ResponseEntity<String> getGoods(
-            @RequestParam(required = false) HashMap<String, String> param
-    ) {
-        /**
-         * saleMode= yesterday, priceComparison
-         * page = 1,2,3...
-         * ex) GOODS_SERVER/goods?saleType=yesterday&page=1&search=하얀색 상의
-         */
+    public ResponseEntity<String> getGoods(@RequestParam(required = false) HashMap<String, String> param) {
         if (!param.containsKey("saleType") && !param.containsKey("page")) {
             param.put("saleType", "yesterday");
             param.put("page", "1");
-        }
-        else if (!param.containsKey("saleType")){
+        } else if (!param.containsKey("saleType")) {
             param.put("saleType", "yesterday");
-        }
-        else if (!param.containsKey("page")) {
+        } else if (!param.containsKey("page")) {
             param.put("page", "1");
         }
-        // UriComponentsBuilder -> Uri 편하게 만들기 위하여 사용. <- 안쓰면 직접 path?key=value 다 설정해야 함.
         URI uri = UriComponentsBuilder
                 .fromUriString(UrlConfig.GOODS_SERVER.getUrl())
                 .path("/api/goods")
-                .queryParam("saleMode", param.get("salemode"))
+                .queryParam("saleType", param.get("saleType"))
                 .queryParam("page", param.get("page"))
                 .encode()
                 .build()
@@ -80,11 +67,11 @@ public class GoodsController {
     @CrossOrigin("*")
     public ResponseEntity<String> getGoodsListChart(@PathVariable("goods_id") int data, @RequestHeader HttpHeaders httpHeaders) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization",httpHeaders.getFirst("Authorization"));
+        headers.add("Authorization", httpHeaders.getFirst("Authorization"));
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(headers);
         String url = UrlConfig.GOODS_SERVER.getUrl() + GOODS_LIST_URL;
 
-        ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET,request,String.class,data);
+        ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET, request, String.class, data);
 
         return ResponseEntity.ok(result.getBody());
     }

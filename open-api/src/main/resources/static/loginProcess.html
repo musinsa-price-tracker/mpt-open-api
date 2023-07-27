@@ -1,27 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <title> route page </title>
 </head>
 <body>
 <script>
-    function getUrlParams() {
-        var params = {};
-
-        decodeURIComponent(window.location.search).replace(/[?&]+([^=&]+)=([^&]*)/gi,
-            function(str, key, value) {
-                params[key] = value;
-            }
-        );
-
-        return params;
-    }
     window.onload = function() {
-        var params = getUrlParams();
-
-        // console.log(params['loginParam']);
-        // console.log(JSON.parse(decodeURI(params['loginParam'])));
-
+        const urlParams = new URLSearchParams(window.location.search);
+        const params = JSON.parse(urlParams.get('userResponse'));
         try{
             if(window.opener !== null){
                 window.opener.postMessage(params,"*");
