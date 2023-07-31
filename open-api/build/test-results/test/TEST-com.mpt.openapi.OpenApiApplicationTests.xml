@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mpt.openapi.OpenApiApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-28T05:08:43" hostname="psg.local" time="0.443">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.mpt.openapi.OpenApiApplicationTests" time="0.443"/>
+  <system-out><![CDATA[14:08:42.830 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mpt.openapi.OpenApiApplicationTests]: OpenApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:08:42.877 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mpt.openapi.OpenApiApplication for test class com.mpt.openapi.OpenApiApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2023-07-28T14:08:43.088+09:00  INFO 55004 --- [    Test worker] c.mpt.openapi.OpenApiApplicationTests    : Starting OpenApiApplicationTests using Java 17.0.6 with PID 55004 (started by psg in /Users/psg/Desktop/musinsa-tracker/git-api/open-api)
+2023-07-28T14:08:43.089+09:00  INFO 55004 --- [    Test worker] c.mpt.openapi.OpenApiApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2023-07-28T14:08:43.635+09:00  INFO 55004 --- [    Test worker] c.mpt.openapi.OpenApiApplicationTests    : Started OpenApiApplicationTests in 0.686 seconds (process running for 1.233)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
