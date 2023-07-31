@@ -44,11 +44,11 @@ public class GoodsController {
     public ResponseEntity<String> getGoods(@RequestParam(required = false) HashMap<String, String> param) {
         if (!param.containsKey("saleType") && !param.containsKey("page")) {
             param.put("saleType", "yesterday");
-            param.put("page", "1");
+            param.put("page", "-1");
         } else if (!param.containsKey("saleType")) {
             param.put("saleType", "yesterday");
         } else if (!param.containsKey("page")) {
-            param.put("page", "1");
+            param.put("page", "-1");
         }
         URI uri = UriComponentsBuilder
                 .fromUriString(UrlConfig.GOODS_SERVER.getUrl())

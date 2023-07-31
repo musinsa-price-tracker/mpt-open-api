@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> route page </title>
+</head>
+<body>
+<script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const params = JSON.parse(urlParams.get('userResponse'));
+        try{
+            if(window.opener !== null){
+                window.opener.postMessage(params,"*");
+            }
+        } catch (e){
+            console.log(e);
+        } finally {
+            window.close();
+        }
+    }
+</script>
+</body>
+</html>
